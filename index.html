@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hima & Amal - Our Wedding</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #d4af37;
+      --bg: #faf8f5;
+      --text: #4a4a4a;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: var(--bg);
+      color: var(--text);
+      text-align: center;
+    }
+
+    header {
+      padding: 60px 20px 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* Countdown Timer Styling */
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px auto 10px;
+      max-width: 500px;
+    }
+
+    .countdown-box {
+      background: white;
+      padding: 15px 10px;
+      border-radius: 8px;
+      min-width: 65px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .countdown-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary);
+      display: block;
+    }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-top: 5px;
+      display: block;
+    }
+
+    .card {
+      max-width: 600px;
+      margin: 30px auto 60px;
+      padding: 30px 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    /* Image Styling */
+    .couple-img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .details {
+      margin: 20px 0;
+      line-height: 1.8;
+    }
+
+    .details strong {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="subtitle">Join the celebration of</p>
+    <h1>Hima & Amal</h1>
+    <p>Save the Date: April 11, 2027</p>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-container" id="countdown">
+      <div class="countdown-box">
+        <span class="countdown-number" id="days">00</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-number" id="hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-number" id="minutes">00</span>
+        <span class="countdown-label">Mins</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-number" id="seconds">00</span>
+        <span class="countdown-label">Secs</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="card">
+    <!-- Image Section - Filename updated here -->
+    <img src="image_4.png" alt="Hima and Amal" class="couple-img">
+
+    <section class="details">
+      <h2>Event Details</h2>
+      <p><strong>Date:</strong> April 11, 2027</p>
+      <p><strong>Venue:</strong> Mash Auditorium</p>
+    </section>
+  </main>
+
+  <!-- Countdown Timer JavaScript (Date already updated) -->
+  <script>
+    const weddingDate = new Date('April 11, 2027 10:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = weddingDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = String(days).padStart(2, '0');
+        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+      } else {
+        document.getElementById('countdown').innerHTML = "<p style='font-size: 1.2rem; color: var(--accent);'>Today is the Big Day!</p>";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
